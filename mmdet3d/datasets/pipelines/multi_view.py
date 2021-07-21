@@ -56,7 +56,7 @@ class KittiSetOrigin:
 @PIPELINES.register_module()
 class KittiRandomFlip:
     def __call__(self, results):
-        if results['flip']:
+        if 'flip' in results:
             results['lidar2img']['intrinsic'][0, 2] = -results['lidar2img']['intrinsic'][0, 2] + \
                                                       results['ori_shape'][1]
             flip_matrix_0 = np.eye(4, dtype=np.float32)
